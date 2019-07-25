@@ -1,6 +1,6 @@
 {
-  "name": "ak-cli",
-  "version": "1.0.0",
+  "name": "amresh-cli",
+  "version": "1.0.1",
   "engines": {
     "node": ">=8.9"
   },
