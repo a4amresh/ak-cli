@@ -1,14 +1,14 @@
 {
   "name": "amresh-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "node": ">=8.9"
   },
   "description": "Software development tool for front end.",
   "bin": {
-    "ak": "bin/ak"
+    "ak": "bin/ak.js"
   },
-  "main": "bin/ak",
+  "main": "bin/ak.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/a4amresh/ak-cli.git"
