@@ -1,0 +1,44 @@
+{
+  "name": "ak-cli",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=8.9"
+  },
+  "description": "Software development tool for front end.",
+  "bin": {
+    "ak": "bin/ak"
+  },
+  "main": "bin/ak",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a4amresh/ak-cli.git"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "config": {
+    "generatorsRepo": "https://github.com/a4amresh/ak-cli-generators.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node lib/clone-tpls.js"
+  },
+  "keywords": [
+    "Node cli",
+    "project starter",
+    "frontend kit"
+  ],
+  "author": "Amresh Kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a4amresh/ak-cli/issues"
+  },
+  "homepage": "https://github.com/a4amresh/ak-cli#readme",
+  "dependencies": {
+    "figlet": "^1.2.3",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^6.5.0",
+    "semver": "^6.3.0"
+  }
+}
