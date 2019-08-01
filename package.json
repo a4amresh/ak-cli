@@ -36,9 +36,17 @@
   },
   "homepage": "https://github.com/a4amresh/ak-cli#readme",
   "dependencies": {
+    "arg": "^4.1.1",
     "figlet": "^1.2.3",
     "fs-extra": "^8.1.0",
-    "inquirer": "^6.5.0",
-    "semver": "^6.3.0"
+    "inquirer": "^6.5.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.2.0",
+    "@types/fs-extra": "^8.0.0",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^12.6.8",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   }
 }
