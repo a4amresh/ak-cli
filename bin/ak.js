@@ -10,18 +10,11 @@
 
 const fs = require('fs');
 const path = require('path');
-const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')));
-const semver = require('semver');
+const tsconfig = path.join(__dirname, '../tsconfig.json');
+const dev = fs.existsSync(tsconfig);
 
-// Check versioning
-const nodeVer = process.versions.node;
-const requiredNVer = pkg.engines.node;
-const isOk = semver.satisfies(nodeVer, requiredNVer);
-if (!isOk) {
-    const text = 'Node.js %s is not supported. Please use a version %s.';
-    console.error(text, nodeVer, requiredNVer);
-    process.exit(1);
+if (dev) {
+    require('ts-node').register({ tsconfig });
 }
 
-const main = require('../lib/cli');
-main();
+require(`../${dev ? 'src': 'lib'}`).run(process.argv);
