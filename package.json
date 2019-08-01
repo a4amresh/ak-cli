@@ -1,6 +1,6 @@
 {
   "name": "amresh-cli",
-  "version": "1.0.2",
+  "version": "2.0.0-beta.0",
   "engines": {
     "node": ">=8.9"
   },
@@ -8,7 +8,7 @@
   "bin": {
     "ak": "bin/ak.js"
   },
-  "main": "bin/ak.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/a4amresh/ak-cli.git"
@@ -21,8 +21,7 @@
     "generatorsRepo": "https://github.com/a4amresh/ak-cli-generators.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "node lib/clone-tpls.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Node cli",

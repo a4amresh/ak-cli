@@ -3,4 +3,3 @@ generators
 .git
 npm-debug.log
 package-lock.json
-package-lock=false

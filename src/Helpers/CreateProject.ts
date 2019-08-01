@@ -1,3 +1,12 @@
+/**
+* @license
+* Copyright (c) 2019 Amresh Kumar
+* 
+* Use of this source code is governed by an MIT-style license that can be found
+* in the LICENSE file at https://github.com/a4amresh/ak-cli/blob/master/LICENSE
+*/
+
+
 import { join } from 'path';
 import figlet from 'figlet';
 import chalk from 'chalk';
@@ -32,7 +41,7 @@ function createDirContents(tplPath: string, pName: string, basedTemplate: string
         }, (figErr: any, data: any) => {
             if (figErr) {
                 log(chalk.red(figErr));
-                process.exit(1);
+                //process.exit(1);
             }
             process.stdout.write('\x1b[2J');
             log(chalk.blue(data));

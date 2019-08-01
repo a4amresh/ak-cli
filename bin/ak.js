@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * @license
  * Copyright (c) 2019 Amresh Kumar
@@ -10,11 +11,12 @@
 
 const fs = require('fs');
 const path = require('path');
-const tsconfig = path.join(__dirname, '../tsconfig.json');
-const dev = fs.existsSync(tsconfig);
+// const tsconfig = path.join(__dirname, '../tsconfig.json');
+// const dev = fs.existsSync(tsconfig);
 
-if (dev) {
-    require('ts-node').register({ tsconfig });
-}
+// if (dev) {
+//     require('ts-node').register({ tsconfig });
+// }
 
-require(`../${dev ? 'src': 'lib'}`).run(process.argv);
+// require(`../${dev ? 'src': 'lib'}`).run(process.argv);
+require('../lib').run(process.argv);
