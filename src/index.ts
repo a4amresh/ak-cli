@@ -8,22 +8,42 @@
 
 
 import { parseArgs, parseMissingOptions } from './Helpers/RunHelpers';
-import createProject from './Helpers/CreateProject';
 import getTemplates from './Helpers/TemplatesList';
+import createProject from './Helpers/CreateProject';
 import installTemplate from './Helpers/InstallTemplates';
+import TaskLoader from './Helpers/TaskLoader';
+import PrintWelcome from './Helpers/PrintWelcome';
 
+// interface ICreatedPOpts {
+//     targetDir: string;
+
+// }
+/**
+ * Main class for run ak CLI
+ * @constructor
+ * @abstract You don't create object of this class. Directly run static function from this class
+ */
 abstract class Main {
 
-    public static async run(args: []) {
+    /**
+     * Run CLI business code.
+     * @param {array<string>} args pass `process.argv`
+     */
+    public static async run(args: []): Promise<boolean> {
 
         let options = parseArgs(args);
         const templates = await getTemplates();
+
         if (templates.length <= 0) {
             const res = await installTemplate();
-            if(!res.success) process.exit(1);
+            if (!res.success) process.exit(0);
         }
+
         const answers = await parseMissingOptions(options);
-        createProject(answers);
+        //await createProject(answers);
+        const opts = await TaskLoader(createProject, answers);
+        PrintWelcome(opts.projectDirName, opts.template);
+        return true;
     }
 }
 
