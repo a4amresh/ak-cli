@@ -9,8 +9,8 @@
  */
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 // const tsconfig = path.join(__dirname, '../tsconfig.json');
 // const dev = fs.existsSync(tsconfig);
 
@@ -19,4 +19,6 @@ const path = require('path');
 // }
 
 // require(`../${dev ? 'src': 'lib'}`).run(process.argv);
-require('../lib').run(process.argv);
+require('../lib').run(process.argv).catch(err=> {
+    console.log(err);
+});
