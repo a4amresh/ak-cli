@@ -17,15 +17,20 @@ const pkg = readJSONSync(join(__dirname, '../../package.json'), {
 });
 
 /**
- * @constant tplsPath
+ * @constant tplPath
  */
-const tplsPath = join(__dirname, '../../generators');
+const tplPath = join(__dirname, '../../generators');
 
+/**
+ * Cloning repository for generators
+ * @constructor
+ */
 async function cloneRepo() {
     //console.log(chalk.blue("Installing templates..."));
     try {
-        await execSync('git clone ' + pkg.config.generatorsRepo + ' generators');
-        await removeSync(join(tplsPath, '/.git'));
+        //const cloneDir = join(__dirname, "../../generators");
+        await execSync('git clone ' + pkg.config.generatorsRepo + ' ' + tplPath);
+        await removeSync(join(tplPath, '/.git'));
         //console.log(chalk.keyword('orange')("Installed templates successfully!"));
         return {
             error: null,
@@ -43,10 +48,14 @@ async function cloneRepo() {
     }
 };
 
+/**
+ * Installing templates if is not available in local
+ * @constructor
+ */
 export default async function installTemplate() {
-    const isDir = await pathExists(tplsPath);
+    const isDir = await pathExists(tplPath);
     if (isDir) {
-        await removeSync(tplsPath);
+        await removeSync(tplPath);
     }
     return await cloneRepo();
 }
