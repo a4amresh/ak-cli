@@ -8,7 +8,7 @@
 
 
 import arg from 'arg';
-import inquirer, { Question } from 'inquirer';
+import inquirer from 'inquirer';
 import getTemplates from './TemplatesList';
 import { existsSync } from 'fs-extra';
 
@@ -17,10 +17,10 @@ export function parseArgs(rawArgs: []) {
     try {
         const args = arg(
             {
-                '--git': Boolean,
+               // '--git': Boolean,
                 '--yes': Boolean,
                 '--install': Boolean,
-                '-g': '--git',
+                //'-g': '--git',
                 '-y': '--yes',
                 '-i': '--install',
             },
@@ -30,7 +30,7 @@ export function parseArgs(rawArgs: []) {
         );
         return {
             skipPrompts: args['--yes'] || false,
-            git: args['--git'] || false,
+            //git: args['--git'] || false,
             //template: args._[0],
             projectDir: args._[0],
             runInstall: args['--install'] || false,
@@ -94,11 +94,19 @@ export async function parseMissingOptions(options: any) {
         });
     }
 
-    if (!options.git) {
+    // if (!options.git) {
+    //     questions.push({
+    //         type: 'confirm',
+    //         name: 'git',
+    //         message: 'Initialize a git repository?',
+    //         default: false,
+    //     });
+    // }
+    if (!options.runInstall) {
         questions.push({
             type: 'confirm',
-            name: 'git',
-            message: 'Initialize a git repository?',
+            name: 'runInstall',
+            message: 'Install npm packages',
             default: false,
         });
     }
@@ -108,7 +116,8 @@ export async function parseMissingOptions(options: any) {
         ...options,
         template: options.template || answers.template,
         projectDir: options.projectDir || answers.projectDir,
-        git: options.git || answers.git,
+        //git: options.git || answers.git,
+        runInstall: options.runInstall || answers.runInstall,
     };
 }
 // #endregion
